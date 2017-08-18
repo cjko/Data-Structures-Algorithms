@@ -43,6 +43,13 @@ class BST(object):
 				q.enqueue(item.right)
 		return string
 
+	def dfsTraversal(self):
+		if self.root:
+			print(self.root.left.dfsTraversal())
+			print(self.root.right.dfsTraversal())
+		else:
+			return None
+
 	def add(self, val):
 		if not self.root:
 			self.root = BSTNode(val)
@@ -68,6 +75,14 @@ class BSTNode(object):
 		self.left = None
 		self.right = None
 
+	def dfsTraversal(self):
+		if self.left:
+			print(self.left.dfsTraversal())
+		if self.right:
+			print(self.right.dfsTraversal())
+		if not self.left and self.right:
+			return ' %d ' % self.val
+
 	def add(self, val):
 		if val < self.val:
 			if self.left:
@@ -86,7 +101,7 @@ bst = BST()
 bst.add(50)
 bst.add(25)
 bst.add(75)
-print(bst)
+bst.dfsTraversal()
 
 
 
